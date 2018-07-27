@@ -66,7 +66,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MediaMaker.Common\MediaMaker.Common.csproj">
+      <Project>{F098BFE5-9D09-4DDD-B501-8AA4A6A04D15}</Project>
+      <Name>MediaMaker.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

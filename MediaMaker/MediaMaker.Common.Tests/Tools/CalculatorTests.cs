@@ -24,7 +24,9 @@ namespace MediaMaker.Common.Tests.Tools
         {
             //assemble
             //act
+            var value = _calculator.Add(1, 2);
             //assert
+            Assert.IsTrue(value == 3);
         }
 
         [Test]
@@ -32,15 +34,10 @@ namespace MediaMaker.Common.Tests.Tools
         {
             //assemble
             //act
-            //assert
-        }
+            var value = _calculator.Subtract(2, 1);
 
-        [Test]
-        public void Calculator_Divide_Returns_Correct_Value()
-        {
-            //assemble
-            //act
             //assert
+            Assert.IsTrue(value == 1);
         }
 
         [Test]
@@ -48,7 +45,21 @@ namespace MediaMaker.Common.Tests.Tools
         {
             //assemble
             //act
+            var value = _calculator.Multiply(2, 2);
+
             //assert
+            Assert.IsTrue(value == 4);
+        }
+
+        [Test]
+        public void Calculator_Divide_Returns_Correct_Value()
+        {
+            //assemble
+            //act
+            var value = _calculator.Divide(1, 2);
+
+            //assert
+            Assert.IsTrue(Math.Round(value, 1) == 0.5);
         }
     }
 }

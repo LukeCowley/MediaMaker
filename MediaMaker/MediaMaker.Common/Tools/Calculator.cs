@@ -11,7 +11,7 @@ namespace MediaMaker.Common.Tools
             throw new NotImplementedException();
         }
 
-        public double Divide(long numerator, long denominator)
+        public long Subtract(long subtrahend, long minuend)
         {
             throw new NotImplementedException();
         }
@@ -21,9 +21,11 @@ namespace MediaMaker.Common.Tools
             throw new NotImplementedException();
         }
 
-        public long Subtract(long subtrahend, long minuend)
+        public double Divide(long numerator, long denominator)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

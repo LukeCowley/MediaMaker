@@ -11,7 +11,7 @@ namespace MediaMaker.Common.Tools
         /// Adds two values
         /// </summary>
         /// <returns>Sum of the two values provided</returns>
-        public long Add(long firstValue, long secondValue)
+        public double Add(double firstValue, double secondValue)
         {
             return firstValue + secondValue;
         }
@@ -22,7 +22,7 @@ namespace MediaMaker.Common.Tools
         /// <param name="subtrahend">Initial value to be subtracted from</param>
         /// <param name="minuend">Value to subtract</param>
         /// <returns>Difference of the two values</returns>
-        public long Subtract(long subtrahend, long minuend)
+        public double Subtract(double subtrahend, double minuend)
         {
             return subtrahend - minuend;
         }
@@ -31,7 +31,7 @@ namespace MediaMaker.Common.Tools
         /// Multiplies two values
         /// </summary>
         /// <returns>Product of the two inputs</returns>
-        public long Multiply(long firstFactor, long secondFactor)
+        public double Multiply(double firstFactor, double secondFactor)
         {
             return firstFactor * secondFactor;
         }
@@ -42,7 +42,7 @@ namespace MediaMaker.Common.Tools
         /// <param name="numerator">The initial value before division</param>
         /// <param name="denominator">The value to divide by</param>
         /// <returns></returns>
-        public double Divide(long numerator, long denominator)
+        public double Divide(double numerator, double denominator)
         {
             return (double)numerator / denominator;
         }

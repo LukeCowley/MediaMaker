@@ -33,7 +33,7 @@ namespace MediaMaker.Common.Tools
         /// <returns>Product of the two inputs</returns>
         public long Multiply(long firstFactor, long secondFactor)
         {
-            throw new NotImplementedException();
+            return firstFactor * secondFactor;
         }
 
         /// <summary>

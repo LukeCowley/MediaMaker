@@ -24,7 +24,7 @@ namespace MediaMaker.Common.Tools
         /// <returns>Difference of the two values</returns>
         public long Subtract(long subtrahend, long minuend)
         {
-            throw new NotImplementedException();
+            return subtrahend - minuend;
         }
 
         /// <summary>

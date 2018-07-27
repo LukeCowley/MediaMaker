@@ -17,7 +17,6 @@
 
 namespace MediaMaker.Web.DependencyResolution {
     using MediaMaker.Common.Tools;
-    using MediaMaker.Common.Tools.Interfaces;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
 	

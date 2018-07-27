@@ -16,6 +16,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace MediaMaker.Web.DependencyResolution {
+    using MediaMaker.Common.Tools;
+    using MediaMaker.Common.Tools.Interfaces;
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
 	
@@ -29,7 +31,7 @@ namespace MediaMaker.Web.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            //For<IExample>().Use<Example>();
+            For<ICalculator>().Use<Calculator>();
         }
 
         #endregion

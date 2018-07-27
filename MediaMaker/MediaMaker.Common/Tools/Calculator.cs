@@ -44,9 +44,7 @@ namespace MediaMaker.Common.Tools
         /// <returns></returns>
         public double Divide(long numerator, long denominator)
         {
-            throw new NotImplementedException();
+            return (double)numerator / denominator;
         }
-
-
     }
 }

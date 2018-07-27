@@ -199,7 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MediaMaker.Common\MediaMaker.Common.csproj">
-      <Project>{D3EDB604-1A67-49D2-BDEB-C708F6D00154}</Project>
+      <Project>{F098BFE5-9D09-4DDD-B501-8AA4A6A04D15}</Project>
       <Name>MediaMaker.Common</Name>
     </ProjectReference>
   </ItemGroup>

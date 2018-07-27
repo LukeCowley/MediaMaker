@@ -13,7 +13,7 @@ namespace MediaMaker.Common.Tools
         /// <returns>Sum of the two values provided</returns>
         public long Add(long firstValue, long secondValue)
         {
-            throw new NotImplementedException();
+            return firstValue + secondValue;
         }
 
         /// <summary>

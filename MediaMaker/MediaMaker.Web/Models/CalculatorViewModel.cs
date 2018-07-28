@@ -10,6 +10,6 @@ namespace MediaMaker.Web.Models
     {
         public double firstValue;
         public double secondValue;
-        public ArithmeticOperators arithmeticOperator;
+        public ArithmeticOperator arithmeticOperator;
     }
 }

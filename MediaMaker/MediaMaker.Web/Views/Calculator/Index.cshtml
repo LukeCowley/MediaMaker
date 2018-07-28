@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Calculator";
 }
-
 <div class="row">
     <div class="col-xs-12">
         <h2>Awesome Simple Calculator App!</h2>
@@ -11,13 +10,32 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row calc-container">
     <div class="col-xs-12">
-        <label for="first-value">Value 1</label>
-        @Html.TextBoxFor(m => m.firstValue, new { id = "first-value", type = "number", @class = "form-control" })
+        <label for="calc-first-value">Value 1</label>
+        @Html.TextBoxFor(m => m.firstValue, new { id = "calc-first-value", type = "number", @class = "form-control" })
 
-        <label for="second-value">Value 1</label>
-        @Html.TextBoxFor(m => m.secondValue, new { id = "second-value", type = "number", @class = "form-control" })
+        <label for="calc-second-value">Value 1</label>
+        @Html.TextBoxFor(m => m.secondValue, new { id = "calc-second-value", type = "number", @class = "form-control" })
+        @Html.EnumDropDownListFor(m => m.arithmeticOperator, "Select operator...", new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="col-xs-12">
+        <span class="btn btn-primary calculate">Calculate</span>
+        <span class="btn btn-danger reset">Reset</span>
     </div>
 </div>
+
+@section styles{
+    <link href="~/Content/Calculator.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script type="text/javascript">
+        //event handlers
+        $(".calc-container .calculate").on("click", function () {
+            
+        })
+    </script>
+}
 

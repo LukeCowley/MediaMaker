@@ -1,4 +1,4 @@
-﻿using MediaMaker.Web.Models;
+﻿using MediaMaker.Common.Models.Calculator;
 using System;
 using System.Collections.Generic;
 using System.Linq;

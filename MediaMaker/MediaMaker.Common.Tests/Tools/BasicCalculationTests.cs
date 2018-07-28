@@ -1,4 +1,5 @@
 ﻿using MediaMaker.Common.Tools;
+using MediaMaker.Common.Tools.Calculations;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,22 +10,18 @@ using System.Threading.Tasks;
 namespace MediaMaker.Common.Tests.Tools
 {
     [TestFixture]
-    public class CalculatorTests
+    public class BasicCalculationTests
     {
-        private Calculator _calculator;
-
-        [OneTimeSetUp]
-        public void Init()
-        {
-            _calculator = new Calculator();
-        }
-
         [Test]
         public void Calculator_Add_Returns_Correct_Values()
         {
             //assemble
+            var calc = new BasicCalculation(1);
             //act
-            var value = _calculator.Add(1, 2);
+            var value = calc
+                .Add(2)
+                .Calculate();
+
             //assert
             Assert.IsTrue(value == 3);
         }
@@ -33,8 +30,11 @@ namespace MediaMaker.Common.Tests.Tools
         public void Calculator_Subtract_Returns_Correct_Value()
         {
             //assemble
+            var calc = new BasicCalculation(2);
             //act
-            var value = _calculator.Subtract(2, 1);
+            var value = calc
+                .Subtract(1)
+                .Calculate();
 
             //assert
             Assert.IsTrue(value == 1);
@@ -44,8 +44,11 @@ namespace MediaMaker.Common.Tests.Tools
         public void Calculator_Multiply_Returns_Correct_Value()
         {
             //assemble
+            var calc = new BasicCalculation(2);
             //act
-            var value = _calculator.Multiply(2, 2);
+            var value = calc
+                .Multiply(2)
+                .Calculate();
 
             //assert
             Assert.IsTrue(value == 4);
@@ -55,8 +58,12 @@ namespace MediaMaker.Common.Tests.Tools
         public void Calculator_Divide_Returns_Correct_Value()
         {
             //assemble
+            var calc = new BasicCalculation(1);
+            
             //act
-            var value = _calculator.Divide(1, 2);
+            var value = calc
+                .Divide(2)
+                .Calculate();
 
             //assert
             Assert.IsTrue(Math.Round(value, 1) == 0.5);

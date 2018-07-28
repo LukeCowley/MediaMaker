@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MediaMaker.Common.Models.Calculator
+namespace MediaMaker.Web.Models.Calculator
 {
-    public class CalculatorViewModel
+    public class BasicCalculationViewModel
     {
         public double firstValue;
         public double secondValue;

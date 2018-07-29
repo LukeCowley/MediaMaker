@@ -55,7 +55,7 @@
 
 @section scripts{
     <script type="text/javascript">
-        $(function () {
+        (function () {
             //page load
             $(".calc-container input").val("");
 
@@ -82,7 +82,7 @@
                         url = baseUrl.concat("divide");
                         break;
                     default:
-                        break;
+                        return;
                 }
 
                 $.ajax({

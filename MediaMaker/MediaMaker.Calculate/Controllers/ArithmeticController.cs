@@ -12,35 +12,35 @@ namespace MediaMaker.Calculate.Controllers
     public class ArithmeticController : ApiController
     {
         [HttpGet]
-        public double Add(string firstValue, string secondValue)
+        public IHttpActionResult Add(double firstValue, double secondValue)
         {
-            return new BasicCalculation(double.Parse(firstValue))
-                .Add(double.Parse(secondValue))
-                .Calculate();
+            return Ok(new BasicCalculation(firstValue)
+                .Add(secondValue)
+                .Calculate());
         }
 
         [HttpGet]
-        public double Subtract(double firstValue, double secondValue)
+        public IHttpActionResult Subtract(double firstValue, double secondValue)
         {
-            return new BasicCalculation(firstValue)
+            return Ok(new BasicCalculation(firstValue)
                 .Subtract(secondValue)
-                .Calculate();
+                .Calculate());
         }
 
         [HttpGet]
-        public double Multiply(double firstValue, double secondValue)
+        public IHttpActionResult Multiply(double firstValue, double secondValue)
         {
-            return new BasicCalculation(firstValue)
+            return Ok(new BasicCalculation(firstValue)
                 .Multiply(secondValue)
-                .Calculate();
+                .Calculate());
         }
 
         [HttpGet]
-        public double Divide(double firstValue, double secondValue)
+        public IHttpActionResult Divide(double firstValue, double secondValue)
         {
-            return new BasicCalculation(firstValue)
+            return Ok(new BasicCalculation(firstValue)
                 .Divide(secondValue)
-                .Calculate();
+                .Calculate());
         }
     }
 }

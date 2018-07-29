@@ -14,3 +14,11 @@ input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+.error {
+    color: red
+}
+
+.form-control.error {
+    color: black
+}

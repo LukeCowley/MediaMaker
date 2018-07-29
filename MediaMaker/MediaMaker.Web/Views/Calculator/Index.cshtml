@@ -22,17 +22,22 @@
 
 <div class="row calc-container">
     <div class="col-md-12">
-        <label for="calc-first-value">Value 1</label>
-        @Html.TextBoxFor(m => m.firstValue, new { id = "calc-first-value", type = "number", @class = "form-control", style = "" })
-
-        <label for="calc-second-value">Value 1</label>
-        @Html.TextBoxFor(m => m.secondValue, new { id = "calc-second-value", type = "number", @class = "form-control" })
-        @Html.EnumDropDownListFor(m => m.arithmeticOperator, "Select operator...", new { id = "arithmetic-operator", @class = "form-control" })
-    </div>
-    <br />
-    <div class="col-md-12">
-        <span class="btn btn-primary calculate">Calculate</span>
-        <span class="btn btn-danger reset">Reset</span>
+        <form name="calc">
+            <div>
+                <label for="calc-first-value">Value 1</label>
+                @Html.TextBoxFor(m => m.firstValue, new { id = "calc-first-value", type = "number", @class = "form-control", name = "firstValue" })
+            </div>
+            <div>
+                <label for="calc-second-value">Value 2</label>
+                @Html.TextBoxFor(m => m.secondValue, new { id = "calc-second-value", type = "number", @class = "form-control", name = "secondValue", })
+                @Html.EnumDropDownListFor(m => m.arithmeticOperator, "Select operator...", new { id = "arithmetic-operator", @class = "form-control", name = "arithmeticOperator" })
+            </div>
+            <br />
+            <div class="col-md-12">
+                <span class="btn btn-primary calculate">Calculate</span>
+                <span class="btn btn-danger reset">Reset</span>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -40,7 +45,7 @@
     <div class="col-md-12">
         <span id="result-container">
             <span class="emphasis">
-                Result = 
+                Result =
             </span>
             <span class="result">
 
@@ -54,14 +59,43 @@
 }
 
 @section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
     <script type="text/javascript">
-        (function () {
+        $(function () {
             //page load
             $(".calc-container input").val("");
+            $("select > option[value='0']").val("");
+
+            //validation
+            $("form[name='calc'").validate({
+                rules: {
+                    firstValue: "required",
+                    secondValue: "required",
+                    arithmeticOperator: {
+                        required: true
+                    }
+                },
+                messages: {
+                    firstValue: {
+                        required: "Please enter a numerical value"
+                    },
+                    secondValue: {
+                        required: "Please enter a numerical value"
+                    },
+                    arithmeticOperator: {
+                        required: "Please select an operator"
+                    }
+
+                }
+            });
 
 
             //event handlers
             $(".calc-container .calculate").on("click", function () {
+                if (!$("form[name='calc'").valid()) {
+                    return;
+                }
+
                 var firstValue = $(".calc-container #calc-first-value").val();
                 var secondValue = $(".calc-container #calc-second-value").val();
                 var opperator = $("#arithmetic-operator").val();
@@ -105,7 +139,7 @@
                 $(".calc-container select").val(0);
                 $(".result").text("");
             });
-        })();
+        });
     </script>
 }
 

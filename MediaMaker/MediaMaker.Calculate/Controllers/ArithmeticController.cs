@@ -4,23 +4,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-
+using System.Web.Http.Cors;
 
 namespace MediaMaker.Calculate.Controllers
 {
-    [RoutePrefix("basic")]
+    [EnableCors(origins: "http://localhost:61462", headers: "*", methods: "GET")]
     public class ArithmeticController : ApiController
     {
-        [Route("add")]
         [HttpGet]
-        public double Add(double firstValue, double secondValue)
+        public double Add(string firstValue, string secondValue)
         {
-            return new BasicCalculation(firstValue)
-                .Add(secondValue)
+            return new BasicCalculation(double.Parse(firstValue))
+                .Add(double.Parse(secondValue))
                 .Calculate();
         }
 
-        [Route("subract")]
         [HttpGet]
         public double Subtract(double firstValue, double secondValue)
         {
@@ -29,7 +27,6 @@ namespace MediaMaker.Calculate.Controllers
                 .Calculate();
         }
 
-        [Route("multiply")]
         [HttpGet]
         public double Multiply(double firstValue, double secondValue)
         {
@@ -38,7 +35,6 @@ namespace MediaMaker.Calculate.Controllers
                 .Calculate();
         }
 
-        [Route("divide")]
         [HttpGet]
         public double Divide(double firstValue, double secondValue)
         {

@@ -1,5 +1,7 @@
-﻿@using MediaMaker.Common.Models.Calculator
-@model CalculatorViewModel
+﻿@using MediaMaker.Web.Models.Calculator
+@using MediaMaker.Common.Enums
+
+@model BasicCalculationViewModel
 @{
     ViewBag.Title = "Calculator";
 }
@@ -10,19 +12,40 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-danger" style="display:none;">
+            Something went wrong. Please try again later
+        </div>
+    </div>
+</div>
+
 <div class="row calc-container">
-    <div class="col-xs-12">
+    <div class="col-md-12">
         <label for="calc-first-value">Value 1</label>
-        @Html.TextBoxFor(m => m.firstValue, new { id = "calc-first-value", type = "number", @class = "form-control" })
+        @Html.TextBoxFor(m => m.firstValue, new { id = "calc-first-value", type = "number", @class = "form-control", style = "" })
 
         <label for="calc-second-value">Value 1</label>
         @Html.TextBoxFor(m => m.secondValue, new { id = "calc-second-value", type = "number", @class = "form-control" })
-        @Html.EnumDropDownListFor(m => m.arithmeticOperator, "Select operator...", new { @class = "form-control" })
+        @Html.EnumDropDownListFor(m => m.arithmeticOperator, "Select operator...", new { id = "arithmetic-operator", @class = "form-control" })
     </div>
     <br />
-    <div class="col-xs-12">
+    <div class="col-md-12">
         <span class="btn btn-primary calculate">Calculate</span>
         <span class="btn btn-danger reset">Reset</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <span id="result-container">
+            <span class="emphasis">
+                Result = 
+            </span>
+            <span class="result">
+
+            </span>
+        </span>
     </div>
 </div>
 
@@ -34,8 +57,50 @@
     <script type="text/javascript">
         //event handlers
         $(".calc-container .calculate").on("click", function () {
-            
-        })
+            var firstValue = $(".calc-container #calc-first-value").val();
+            var secondValue = $(".calc-container #calc-second-value").val();
+            var opperator = $("#arithmetic-operator").val();
+            var baseUrl = "http://localhost:49524/api/arithmetic/";
+            var url = "";
+
+            switch (opperator) {
+                case "@((int)ArithmeticOperator.Add)":
+                    url = baseUrl.concat("add");
+                    break;
+                case "@((int)ArithmeticOperator.Subtract)":
+                    url = baseUrl.concat("subtract");
+                    break;
+                case "@((int)ArithmeticOperator.Multiply)":
+                    url = baseUrl.concat("multiply");
+                    break;
+                case "@((int)ArithmeticOperator.Divide)":
+                    url = baseUrl.concat("divide");
+                    break;
+                default:
+                    break;
+            }
+
+            $.ajax({
+                url: url,
+                data: { firstValue: firstValue, secondValue: secondValue },
+                type: 'GET',
+                success: function (response) {
+                    $(".result").text(response);
+                    $(".alert").hide();
+                },
+                error: function () {
+                    $(".alert").show();
+                }
+            });
+        });
+
+        $(".reset").on("click", function () {
+            $(".alert").hide();
+            $(".calc-container input").val("");
+            $(".calc-container select").val(0);
+            $(".result").text("");
+        });
+
     </script>
 }
 

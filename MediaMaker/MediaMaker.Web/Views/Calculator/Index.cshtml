@@ -55,52 +55,57 @@
 
 @section scripts{
     <script type="text/javascript">
-        //event handlers
-        $(".calc-container .calculate").on("click", function () {
-            var firstValue = $(".calc-container #calc-first-value").val();
-            var secondValue = $(".calc-container #calc-second-value").val();
-            var opperator = $("#arithmetic-operator").val();
-            var baseUrl = "http://localhost:49524/api/arithmetic/";
-            var url = "";
-
-            switch (opperator) {
-                case "@((int)ArithmeticOperator.Add)":
-                    url = baseUrl.concat("add");
-                    break;
-                case "@((int)ArithmeticOperator.Subtract)":
-                    url = baseUrl.concat("subtract");
-                    break;
-                case "@((int)ArithmeticOperator.Multiply)":
-                    url = baseUrl.concat("multiply");
-                    break;
-                case "@((int)ArithmeticOperator.Divide)":
-                    url = baseUrl.concat("divide");
-                    break;
-                default:
-                    break;
-            }
-
-            $.ajax({
-                url: url,
-                data: { firstValue: firstValue, secondValue: secondValue },
-                type: 'GET',
-                success: function (response) {
-                    $(".result").text(response);
-                    $(".alert").hide();
-                },
-                error: function () {
-                    $(".alert").show();
-                }
-            });
-        });
-
-        $(".reset").on("click", function () {
-            $(".alert").hide();
+        $(function () {
+            //page load
             $(".calc-container input").val("");
-            $(".calc-container select").val(0);
-            $(".result").text("");
-        });
 
+
+            //event handlers
+            $(".calc-container .calculate").on("click", function () {
+                var firstValue = $(".calc-container #calc-first-value").val();
+                var secondValue = $(".calc-container #calc-second-value").val();
+                var opperator = $("#arithmetic-operator").val();
+                var baseUrl = "http://localhost:49524/api/arithmetic/";
+                var url = "";
+
+                switch (opperator) {
+                    case "@((int)ArithmeticOperator.Add)":
+                        url = baseUrl.concat("add");
+                        break;
+                    case "@((int)ArithmeticOperator.Subtract)":
+                        url = baseUrl.concat("subtract");
+                        break;
+                    case "@((int)ArithmeticOperator.Multiply)":
+                        url = baseUrl.concat("multiply");
+                        break;
+                    case "@((int)ArithmeticOperator.Divide)":
+                        url = baseUrl.concat("divide");
+                        break;
+                    default:
+                        break;
+                }
+
+                $.ajax({
+                    url: url,
+                    data: { firstValue: firstValue, secondValue: secondValue },
+                    type: 'GET',
+                    success: function (response) {
+                        $(".result").text(response);
+                        $(".alert").hide();
+                    },
+                    error: function () {
+                        $(".alert").show();
+                    }
+                });
+            });
+
+            $(".reset").on("click", function () {
+                $(".alert").hide();
+                $(".calc-container input").val("");
+                $(".calc-container select").val(0);
+                $(".result").text("");
+            });
+        })();
     </script>
 }
 
